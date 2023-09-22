@@ -2,7 +2,7 @@ class ShuffleError(Exception):
     def __init__(self, n):
         self.n = n
         if self.n <= 1:
-            print(f"The deck contains {self.n} Shuffling not logical and/or possible.")
+            print(f"The deck contains {self.n} card(s) Shuffling not logical and/or possible.")
 
 class DealError(Exception):
     def __init__(self, n):

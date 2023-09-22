@@ -14,7 +14,7 @@ class PlayingCards(BaseDeck):
         self.ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
         self.suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
         self.deck = [{'rank': rank, 'suit': suit} for rank in self.ranks for suit in self.suits]
-        self.deck_length = len(self.deck)
+        self.num_cards = len(self.deck)
 
     def shuffle(self) -> None:
         """
@@ -31,15 +31,15 @@ class PlayingCards(BaseDeck):
         be shuffled.
         """
         # Get the length of the list
-        if self.deck_length > 1:
+        if self.num_cards > 1:
             # Perform the Fisher-Yates/Knuth shuffle
-            for i in range(self.deck_length - 1, 0, -1):
+            for i in range(self.num_cards - 1, 0, -1):
                 # Generate a random index between 0 and i (inclusive)
                 j = random.randint(0, i)
                 # Swap elements at i and j
                 self.deck[i], self.deck[j] = self.deck[j], self.deck[i]
         else:
-            raise ShuffleError(self.deck_length)
+            raise ShuffleError(self.num_cards)
     
     def deal_one_card(self) -> dict:
         """
@@ -55,13 +55,13 @@ class PlayingCards(BaseDeck):
         left to deal.
         """
         # If there are cards left to deal
-        if len(self.deck) > 0:
+        if self.num_cards > 0:
             # Extract the top card of the deck
             card = self.deck.pop(0)
             # Recalculate the number of cards left in the deck
-            self.deck_length = len(self.deck)
+            self.num_cards = len(self.deck)
             # Return the card to the user
             return card
         # Else raise the DealError exception
         else:
-            raise DealError(self.deck_length)
+            raise DealError(self.num_cards)

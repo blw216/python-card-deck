@@ -33,7 +33,7 @@ class PlayingCards(BaseDeck):
         # Get the length of the list
         if self.deck_length > 1:
             # Perform the Fisher-Yates/Knuth shuffle
-            for i in range(n - 1, 0, -1):
+            for i in range(self.deck_length - 1, 0, -1):
                 # Generate a random index between 0 and i (inclusive)
                 j = random.randint(0, i)
                 # Swap elements at i and j

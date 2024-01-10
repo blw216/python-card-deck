@@ -2,6 +2,7 @@ from pycards.decks.playing_cards import PlayingCards
 from pycards.exceptions import ShuffleError, DealError
 import pytest
 
+
 class TestPlayingCards:
     def test_basic_shuffling(self):
         """
@@ -27,7 +28,7 @@ class TestPlayingCards:
         [card_deck.deal_one_card() for i in range(0, 51, 1)]
         with pytest.raises(ShuffleError):
             card_deck.shuffle()
-    
+
     def test_deal_card_basic(self):
         """
         Test to ensure cards are removed from the deck when dealt.
@@ -48,6 +49,3 @@ class TestPlayingCards:
         [card_deck.deal_one_card() for i in range(0, 52, 1)]
         with pytest.raises(DealError):
             card_deck.deal_one_card()
-
-
-

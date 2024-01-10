@@ -29,9 +29,7 @@ class PlayingCards(BaseDeck):
             "Ace",
         ]
         self.suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
-        self.deck = [
-            {"rank": rank, "suit": suit} for rank in self.ranks for suit in self.suits
-        ]
+        self.deck = [{"rank": rank, "suit": suit} for rank in self.ranks for suit in self.suits]
         self.num_cards = len(self.deck)
 
     def shuffle(self) -> None:

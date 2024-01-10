@@ -2,18 +2,36 @@ import random
 from ..base_deck import BaseDeck
 from ..exceptions import ShuffleError, DealError
 
+
 class PlayingCards(BaseDeck):
     """
     PlayingCards is an implementation of the BaseDeck abstract class,
     consisting of the standard deck of 52 playing card across four suites.
     """
+
     def __init__(self):
         """
         This constructor method represents a standard 52-card playing deck.
         """
-        self.ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
-        self.suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
-        self.deck = [{'rank': rank, 'suit': suit} for rank in self.ranks for suit in self.suits]
+        self.ranks = [
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "Jack",
+            "Queen",
+            "King",
+            "Ace",
+        ]
+        self.suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
+        self.deck = [
+            {"rank": rank, "suit": suit} for rank in self.ranks for suit in self.suits
+        ]
         self.num_cards = len(self.deck)
 
     def shuffle(self) -> None:
@@ -40,7 +58,7 @@ class PlayingCards(BaseDeck):
                 self.deck[i], self.deck[j] = self.deck[j], self.deck[i]
         else:
             raise ShuffleError(self.num_cards)
-    
+
     def deal_one_card(self) -> dict:
         """
         The `deal_one_card` method returns the "top" (position 0) card
